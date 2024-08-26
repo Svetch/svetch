@@ -9,21 +9,31 @@ export default function Index() {
    */
   return (
     <>
-      <section className="flex flex-row items-center justify-center gap-4 min-h-screen">
+      <section className="flex flex-col md:flex-row items-center justify-center gap-4 min-h-screen">
         <Image
           width={512}
           height={512}
           src={ProfileImage}
           alt="ProfileImage"
-          className="h-32 w-32"
+          className="h-32 w-32 rounded-full"
         />
-        <div>
-          <h1 className="text-4xl font-bold">Svetch</h1>
+        <div className="text-center md:text-left">
+          <h1 className="text-3xl font-bold">Román Benjámin</h1>
+          <h2 className="text-2xl font-bold">alias Svetch</h2>
           <p className="text-lg">Fullstack developer</p>
         </div>
       </section>
-      <section className="flex flex-col">
+      <section className="flex flex-col py-2">
         <Technologies />
+      </section>
+      <section className="py-2">
+        <h2 className="text-center text-2xl">Contact</h2>
+        <div className="flex flex-col md:flex-row justify-center gap-4">
+          <a href="mailto:info@svetch.com" className="text-center">
+            Email
+          </a>
+          <a href="https://discord.com/users/788813950115381249">Discord</a>
+        </div>
       </section>
     </>
   );
