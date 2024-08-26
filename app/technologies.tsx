@@ -52,66 +52,74 @@ function Calendar({ technologies }: { technologies: Technology[] }) {
         })}
       </div>
       <div className="w-full flex flex-col gap-2">
-        {technologies
-          .filter((t) => {
-            return t.dates.some((d) => d.end.getFullYear() >= 2018);
-          })
-          .map((technology, tId) => {
-            return (
-              <div key={technology.name} className="relative">
-                <div className="bg-white/10 py-1 px-2 rounded-md">
-                  {technology.name} (
-                  {getStringRange(
-                    technology.dates[0].start,
-                    technology.dates.at(-1)!.end
-                  )}
-                  )
-                </div>
-                {technology.dates.map(({ start, end }, i) => {
-                  const startDifference = Math.abs(
-                    start.getTime() - minDate.getTime()
-                  );
-                  const startPercentage =
-                    (startDifference / fullTimeRange) * 100;
-
-                  const endDifference = Math.abs(
-                    maxDate.getTime() - end.getTime()
-                  );
-                  const endPercentage = (endDifference / fullTimeRange) * 100;
-                  return (
-                    <span
-                      key={i}
-                      style={{
-                        left: `${startPercentage}%`,
-                        right: `${endPercentage}%`,
-                      }}
-                      className="absolute top-0 bg-blue-500/40 h-full rounded-md group"
-                    >
-                      <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1">
-                        {technology.name}
-                      </span>
-                      <span className="hidden group-hover:absolute z-50 -right-20 top-0 w-20 pl-1 ">
-                        ({getStringRange(start, end)})
-                      </span>
-                    </span>
-                  );
-                })}
+        {technologies.map((technology, tId) => {
+          return (
+            <div key={technology.name} className="relative">
+              <div className="bg-white/10 py-1 px-2 rounded-md">
+                {technology.name} ({getStringRange(technology.dates)})
               </div>
-            );
-          })}
+              {technology.dates.map(({ start, end }, i) => {
+                const startDifference = Math.abs(
+                  start.getTime() - minDate.getTime()
+                );
+                const startPercentage = (startDifference / fullTimeRange) * 100;
+
+                const endDifference = Math.abs(
+                  maxDate.getTime() - end.getTime()
+                );
+                const endPercentage = (endDifference / fullTimeRange) * 100;
+                return (
+                  <span
+                    key={i}
+                    style={{
+                      left: `${startPercentage}%`,
+                      right: `${endPercentage}%`,
+                    }}
+                    className="absolute top-0 bg-blue-500/40 h-full rounded-md group"
+                  >
+                    <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1">
+                      {technology.name}
+                    </span>
+                    <span className="hidden group-hover:absolute z-50 -right-20 top-0 w-20 pl-1 ">
+                      ({getStringRange([{ start, end }])})
+                    </span>
+                  </span>
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 }
 
-function getStringRange(start: Date, end: Date) {
-  const range = end.getTime() - start.getTime();
-  const years = Math.floor(range / YEAR);
-  const months = Math.floor((range % YEAR) / MONTH);
-  //const days = Math.floor(((range % YEAR) % MONTH) / DAY);
+function getStringRange(dates: { start: Date; end: Date }[]) {
+  const { months, years } = getDatesRange(dates);
   const m = months > 0 ? `${months}m` : '';
   const y = years > 0 ? `${years}yr${m.length > 0 ? ' ' : ''}` : '';
   return `${y}${m}`;
+}
+function getDateRange(start: Date, end: Date) {
+  const range = end.getTime() - start.getTime();
+  const years = Math.floor(range / YEAR);
+  const months = Math.floor((range % YEAR) / MONTH);
+  const days = Math.floor(((range % YEAR) % MONTH) / DAY);
+  return { years, months, days };
+}
+function getDatesRange(dates: { start: Date; end: Date }[]) {
+  const range = dates.reduce(
+    (acc, cur) => {
+      const { days, months, years } = getDateRange(cur.start, cur.end);
+      return {
+        years: acc.years + years,
+        months: acc.months + months,
+        days: acc.days + days,
+      };
+    },
+    { years: 0, months: 0, days: 0 }
+  );
+  return range;
 }
 
 const SECOND = 1000;
