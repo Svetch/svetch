@@ -33,6 +33,7 @@ export default function Index() {
             Email
           </a>
           <a href="https://discord.com/users/788813950115381249">Discord</a>
+          <a href="https://github.com/svetch">Github</a>
         </div>
       </section>
     </>
