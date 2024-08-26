@@ -2,7 +2,7 @@
 
 ### Hello, I'm Svetch
 
-I'm a self-taught passionate FullStack developer from Hungary
+I'm a self-taught passionate Fullstack developer from Hungary
 
 ### Contact
 
