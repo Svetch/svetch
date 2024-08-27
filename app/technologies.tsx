@@ -1,5 +1,6 @@
 'use client';
 
+import { get } from 'http';
 import { Experience, experience, Technology } from './experience';
 export function Technologies() {
   return (
@@ -131,8 +132,7 @@ function getStringRange(dates: { start: Date; end: Date }[]) {
   const y = years > 0 ? `${years}yr${m.length > 0 ? ' ' : ''}` : '';
   return `${y}${m}`;
 }
-function getDateRange(start: Date, end: Date) {
-  const range = end.getTime() - start.getTime();
+function getDateRange(range: number) {
   const years = Math.floor(range / YEAR);
   const months = Math.floor((range % YEAR) / MONTH);
   const days = Math.floor(((range % YEAR) % MONTH) / DAY);
@@ -140,17 +140,10 @@ function getDateRange(start: Date, end: Date) {
 }
 function getDatesRange(dates: { start: Date; end: Date }[]) {
   const range = dates.reduce(
-    (acc, cur) => {
-      const { days, months, years } = getDateRange(cur.start, cur.end);
-      return {
-        years: acc.years + years,
-        months: acc.months + months,
-        days: acc.days + days,
-      };
-    },
-    { years: 0, months: 0, days: 0 }
+    (acc, cur) => acc + (cur.end.getTime() - cur.start.getTime()),
+    0
   );
-  return range;
+  return getDateRange(range);
 }
 
 const SECOND = 1000;
