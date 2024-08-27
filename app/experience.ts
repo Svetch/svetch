@@ -6,14 +6,38 @@ export type Technology = {
     | 'hosting'
     | 'tool'
     | 'devops'
-    | 'misc';
+    | 'misc'
+    | 'life';
   name: string;
   logo: string;
   link: string;
+  summary?: boolean;
   dates: { start: Date; end: Date }[];
 };
 
-export const experience: Technology[] = [
+const technologies: Technology[] = [
+  //#region Life
+  {
+    name: 'School',
+    logo: '',
+    link: '',
+    dates: [{ start: new Date('2017-01-01'), end: new Date('2022-06-01') }],
+    type: 'life',
+    summary: false,
+  },
+  {
+    name: 'Work',
+    logo: '',
+    link: '',
+    dates: [
+      {
+        start: new Date('2021-03-25'),
+        end: new Date(),
+      },
+    ],
+    type: 'life',
+    summary: true,
+  },
   //#region Languages
   {
     name: 'JavaScript',
@@ -56,7 +80,7 @@ export const experience: Technology[] = [
     dates: [{ start: new Date('2017-06-01'), end: new Date('2022-05-01') }],
     type: 'language',
   },
-/*   {
+  /*   {
     name: 'VisualBasic',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/4/40/VB.NET_Logo.svg',
     link: 'https://docs.microsoft.com/en-us/dotnet/visual-basic/',
@@ -364,3 +388,9 @@ export const experience: Technology[] = [
   },
   //#endregion
 ];
+export type Experience = {
+  technologies: Technology[];
+};
+export const experience: Experience = {
+  technologies,
+};

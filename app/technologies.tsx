@@ -1,16 +1,16 @@
 'use client';
 
-import { experience, Technology } from './experience';
-
+import { Experience, experience, Technology } from './experience';
 export function Technologies() {
   return (
     <>
-      <Calendar technologies={experience} />
+      <Calendar experience={experience} />
     </>
   );
 }
 
-function Calendar({ technologies }: { technologies: Technology[] }) {
+function Calendar({ experience }: { experience: Experience }) {
+  const { technologies } = experience;
   const extremes = technologies.reduce(
     (acc, cur) => {
       const tMax = cur.dates.reduce(
@@ -34,7 +34,7 @@ function Calendar({ technologies }: { technologies: Technology[] }) {
     }
   );
   const maxDate = new Date(extremes.end.getFullYear(), 11, 31);
-  const minDate = new Date(extremes.start.getFullYear(), 1, 1);
+  const minDate = new Date(extremes.start.getFullYear(), 0, 1);
 
   const fullTimeRange = maxDate.getTime() - minDate.getTime();
   return (
@@ -51,45 +51,76 @@ function Calendar({ technologies }: { technologies: Technology[] }) {
           );
         })}
       </div>
-      <div className="w-full flex flex-col gap-2">
-        {technologies.map((technology, tId) => {
-          return (
-            <div key={technology.name} className="relative">
-              <div className="bg-white/10 py-1 px-2 rounded-md">
-                {technology.name} ({getStringRange(technology.dates)})
-              </div>
-              {technology.dates.map(({ start, end }, i) => {
-                const startDifference = Math.abs(
-                  start.getTime() - minDate.getTime()
-                );
-                const startPercentage = (startDifference / fullTimeRange) * 100;
-
-                const endDifference = Math.abs(
-                  maxDate.getTime() - end.getTime()
-                );
-                const endPercentage = (endDifference / fullTimeRange) * 100;
-                return (
-                  <span
-                    key={i}
-                    style={{
-                      left: `${startPercentage}%`,
-                      right: `${endPercentage}%`,
-                    }}
-                    className="absolute top-0 bg-blue-500/40 h-full rounded-md group"
-                  >
-                    <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1">
-                      {technology.name}
-                    </span>
-                    <span className="hidden group-hover:absolute z-50 -right-20 top-0 w-20 pl-1 ">
-                      ({getStringRange([{ start, end }])})
-                    </span>
-                  </span>
-                );
-              })}
-            </div>
-          );
-        })}
+      <div className="w-full flex flex-col gap-2 relative">
+        <div className="absolute top-0 left-0 right-0 bottom-0 flex flex-row w-full justify-between z-30">
+          {Array.from({
+            length: maxDate.getFullYear() - minDate.getFullYear() + 2,
+          }).map((_, i) => {
+            const year = minDate.getFullYear() + i;
+            return (
+              <div
+                key={year}
+                className="bg-white/10 w-1 first:bg-transparent last:bg-transparent z-30"
+              ></div>
+            );
+          })}
+        </div>
+        {technologies.map((technology, tId) => (
+          <TechnologyEntry
+            key={technology.name}
+            fullTimeRange={fullTimeRange}
+            maxDate={maxDate}
+            minDate={minDate}
+            technology={technology}
+          />
+        ))}
       </div>
+    </div>
+  );
+}
+
+function TechnologyEntry({
+  fullTimeRange,
+  maxDate,
+  minDate,
+  technology,
+}: {
+  technology: Technology;
+  minDate: Date;
+  maxDate: Date;
+  fullTimeRange: number;
+}) {
+  return (
+    <div className="relative z-10">
+      <div className="bg-white/10 py-1 px-2 rounded-md">
+        {technology.name}{' '}
+        {(technology.summary || technology.summary === undefined) &&
+          `(${getStringRange(technology.dates)})`}
+      </div>
+      {technology.dates.map(({ start, end }, i) => {
+        const startDifference = Math.abs(start.getTime() - minDate.getTime());
+        const startPercentage = (startDifference / fullTimeRange) * 100;
+
+        const endDifference = Math.abs(maxDate.getTime() - end.getTime());
+        const endPercentage = (endDifference / fullTimeRange) * 100;
+        return (
+          <span
+            key={i}
+            style={{
+              left: `${startPercentage}%`,
+              right: `${endPercentage}%`,
+            }}
+            className="absolute top-0 bg-blue-500/40 h-full rounded-md group z-50"
+          >
+            <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1">
+              {technology.name}
+            </span>
+            <span className="hidden group-hover:absolute z-50 -right-20 top-0 w-20 pl-1 ">
+              ({getStringRange([{ start, end }])})
+            </span>
+          </span>
+        );
+      })}
     </div>
   );
 }
