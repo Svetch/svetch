@@ -113,7 +113,7 @@ function TechnologyEntry({
             }}
             className="absolute top-0 bg-blue-500/40 h-full rounded-md group z-50"
           >
-            <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1">
+            <span className="w-full h-full hidden md:block text-center overflow-hidden whitespace-nowrap text-ellipsis py-1 px-1">
               {technology.name}
             </span>
             <span className="hidden group-hover:absolute z-50 -right-20 top-0 w-20 pl-1 ">
