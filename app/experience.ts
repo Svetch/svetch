@@ -26,6 +26,14 @@ const technologies: Technology[] = [
     summary: false,
   },
   {
+    name: 'Vocational training',
+    logo: '',
+    link: '',
+    dates: [{ start: new Date('2022-09-01'), end: new Date('2024-05-01') }],
+    type: 'life',
+    summary: false,
+  },
+  {
     name: 'Work',
     logo: '',
     link: '',
