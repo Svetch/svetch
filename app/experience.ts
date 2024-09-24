@@ -255,7 +255,7 @@ const technologies: Technology[] = [
     name: 'Drizzle',
     logo: 'https://github.com/drizzle-team/drizzle-orm/raw/main/misc/readme/logo-github-sq-dark.svg#gh-dark-mode-only',
     link: 'https://orm.drizzle.team/',
-    dates: [{ start: new Date('2024-03-21'), end: new Date() }],
+    dates: [{ start: new Date('2024-03-21'), end: new Date('2024-08-27') }],
     type: 'tool',
   },
   //#endregion
