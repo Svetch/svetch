@@ -359,20 +359,20 @@ const technologies: Technology[] = [
     dates: [{ start: new Date('2023-10-01'), end: new Date('2024-05-01') }],
     type: 'devops',
   },
-  {
+/*   {
     name: 'Teleport',
     logo: 'https://avatars.githubusercontent.com/u/10781132?s=48&v=4',
     link: 'https://goteleport.com/',
     dates: [{ start: new Date('2023-11-01'), end: new Date() }],
     type: 'devops',
-  },
-  {
+  }, */
+/*   {
     name: 'Authentik',
     logo: 'https://camo.githubusercontent.com/f068956b02827bfce3b652ac3cbbe563ca05294aa149f73d1049059624445b37/68747470733a2f2f676f61757468656e74696b2e696f2f696d672f69636f6e5f746f705f6272616e645f636f6c6f75722e737667',
     link: 'https://authentik.com/',
     dates: [{ start: new Date('2023-11-01'), end: new Date() }],
     type: 'devops',
-  },
+  }, */
   {
     name: 'Helm',
     logo: 'https://helm.sh/img/helm.svg',
