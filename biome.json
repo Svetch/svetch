@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!!**/.next", "!!**/coverage", "!!**/dist", "!!**/out"]
+    "includes": ["**", "!!**/.next", "!!**/dist", "!!**/out"]
   },
   "formatter": {
     "enabled": true,
@@ -22,8 +22,7 @@
     },
     "domains": {
       "next": "recommended",
-      "react": "recommended",
-      "test": "recommended"
+      "react": "recommended"
     }
   },
   "javascript": {

@@ -28,7 +28,7 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"],
+    "types": ["node"],
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["components/*"],
@@ -44,11 +44,5 @@
     ".next/types/**/*.ts",
     "next-env.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "jest.config.ts",
-    "**/*.spec.ts",
-    "**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
