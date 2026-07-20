@@ -112,7 +112,7 @@ const technologies: Technology[] = [
     name: 'Next.js',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg',
     link: 'https://nextjs.org/',
-    dates: [{ start: new Date('2024-01-05'), end: new Date() }],
+    dates: [{ start: new Date('2024-01-05'), end: new Date('2025-10-01') }],
     type: 'framework',
   },
   {
@@ -195,14 +195,14 @@ const technologies: Technology[] = [
     name: 'MySQL/MariaDB',
     logo: 'https://mariadb.org/wp-content/themes/twentynineteen-child/icons/logo_seal.svg',
     link: 'https://www.mysql.com/',
-    dates: [{ start: new Date('2017-06-01'), end: new Date() }],
+    dates: [{ start: new Date('2017-06-01'), end: new Date('2026-3-01') }],
     type: 'database',
   },
   {
     name: 'Redis',
     logo: 'https://upload.wikimedia.org/wikipedia/en/6/6b/Redis_Logo.svg',
     link: 'https://redis.io/',
-    dates: [{ start: new Date('2020-06-01'), end: new Date('2024-03-25') }],
+    dates: [{ start: new Date('2020-06-01'), end: new Date() }],
     type: 'database',
   },
   //#endregion
@@ -220,7 +220,7 @@ const technologies: Technology[] = [
     name: 'NX Workspace',
     logo: 'https://media.dev.to/cdn-cgi/image/width=320,height=320,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F2995%2F95998d2a-00f2-4e8e-9ebc-0b06de97c37f.png',
     link: 'https://nx.dev/',
-    dates: [{ start: new Date('2021-12-01'), end: new Date() }],
+    dates: [{ start: new Date('2021-12-01'), end: new Date('2025-4-01') }],
     type: 'tool',
   },
   {
@@ -248,7 +248,7 @@ const technologies: Technology[] = [
     name: 'Prisma',
     logo: 'https://github.com/prisma/presskit/raw/main/Assets/Prisma-IndigoLogo.png',
     link: 'https://www.prisma.io/',
-    dates: [{ start: new Date('2022-01-01'), end: new Date() }],
+    dates: [{ start: new Date('2022-01-01'), end: new Date('2025-12-01') }],
     type: 'tool',
   },
   {
@@ -292,7 +292,7 @@ const technologies: Technology[] = [
     name: 'Trello',
     logo: 'https://upload.wikimedia.org/wikipedia/en/8/8c/Trello_logo.svg',
     link: 'https://trello.com/',
-    dates: [{ start: new Date('2021-03-25'), end: new Date() }],
+    dates: [{ start: new Date('2021-03-25'), end: new Date('2025-05-01') }],
     type: 'tool',
   },
   {
@@ -356,7 +356,10 @@ const technologies: Technology[] = [
     name: 'Kubernetes',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg',
     link: 'https://kubernetes.io/',
-    dates: [{ start: new Date('2023-10-01'), end: new Date('2024-05-01') }],
+    dates: [
+      { start: new Date('2023-10-01'), end: new Date('2024-05-01') },
+      { start: new Date('2025-12-01'), end: new Date() },
+    ],
     type: 'devops',
   },
   /*   {
@@ -377,21 +380,30 @@ const technologies: Technology[] = [
     name: 'Helm',
     logo: 'https://helm.sh/img/helm.svg',
     link: 'https://helm.sh/',
-    dates: [{ start: new Date('2023-10-01'), end: new Date('2024-03-01') }],
+    dates: [
+      { start: new Date('2023-10-01'), end: new Date('2024-03-01') },
+      { start: new Date('2025-12-01'), end: new Date() },
+    ],
     type: 'devops',
   },
   {
     name: 'Prometheus',
     logo: 'https://github.com/prometheus/prometheus/raw/main/documentation/images/prometheus-logo.svg',
     link: 'https://prometheus.io/',
-    dates: [{ start: new Date('2023-01-01'), end: new Date('2024-05-01') }],
+    dates: [
+      { start: new Date('2023-01-01'), end: new Date('2024-05-01') },
+      { start: new Date('2025-12-01'), end: new Date() },
+    ],
     type: 'devops',
   },
   {
     name: 'Grafana',
     logo: 'https://github.com/grafana/grafana/raw/main/docs/logo-horizontal-dark.png#gh-dark-mode-only',
     link: 'https://grafana.com/',
-    dates: [{ start: new Date('2023-01-01'), end: new Date('2024-05-01') }],
+    dates: [
+      { start: new Date('2023-01-01'), end: new Date('2024-05-01') },
+      { start: new Date('2025-12-01'), end: new Date() },
+    ],
     type: 'devops',
   },
   //#endregion
