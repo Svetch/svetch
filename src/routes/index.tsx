@@ -2,6 +2,8 @@ import { createFileRoute } from '@tanstack/react-router';
 
 import { Technologies } from '../components/technologies';
 
+const profileImageUrl = `${import.meta.env.BASE_URL}android-chrome-512x512.png`;
+
 export const Route = createFileRoute('/')({
   component: HomePage,
 });
@@ -13,7 +15,7 @@ function HomePage() {
         <img
           width={512}
           height={512}
-          src="/android-chrome-512x512.png"
+          src={profileImageUrl}
           alt="ProfileImage"
           className="h-32 w-32 rounded-full"
         />

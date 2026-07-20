@@ -36,10 +36,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Next.js
-.next
-out
-
 # TanStack Start
-.output
 .tanstack
