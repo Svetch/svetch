@@ -1,14 +1,20 @@
-export default {
+import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+const config: Config = {
   displayName: 'svetch',
-  preset: './jest.preset.js',
-  transform: {
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
-    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nx/next/babel'] }],
-  },
+  coverageProvider: 'v8',
+  testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: './coverage/svetch',
+  coverageDirectory: './coverage',
   testMatch: [
     '<rootDir>/**/__tests__/**/*.[jt]s?(x)',
     '<rootDir>/**/*(*.)@(spec|test).[jt]s?(x)',
   ],
 };
+
+export default createJestConfig(config);

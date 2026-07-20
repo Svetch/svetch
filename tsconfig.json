@@ -42,7 +42,6 @@
     "**/*.js",
     "**/*.jsx",
     ".next/types/**/*.ts",
-    "dist/svetch/.next/types/**/*.ts",
     "next-env.d.ts"
   ],
   "exclude": [
@@ -50,7 +49,6 @@
     "tmp",
     "jest.config.ts",
     "**/*.spec.ts",
-    "**/*.test.ts",
-    "dist/svetch/**/*"
+    "**/*.test.ts"
   ]
 }
