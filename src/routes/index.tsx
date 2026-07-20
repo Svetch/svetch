@@ -1,19 +1,19 @@
-import Image from 'next/image';
-import ProfileImage from '@/public/android-chrome-512x512.png';
-import { Technologies } from './technologies';
-export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
+import { createFileRoute } from '@tanstack/react-router';
+
+import { Technologies } from '../components/technologies';
+
+export const Route = createFileRoute('/')({
+  component: HomePage,
+});
+
+function HomePage() {
   return (
     <>
-      <section className="flex flex-col md:flex-row items-center justify-center gap-4 min-h-screen">
-        <Image
+      <section className="flex min-h-screen flex-col items-center justify-center gap-4 md:flex-row">
+        <img
           width={512}
           height={512}
-          src={ProfileImage}
+          src="/android-chrome-512x512.png"
           alt="ProfileImage"
           className="h-32 w-32 rounded-full"
         />
@@ -28,7 +28,7 @@ export default function Index() {
       </section>
       <section className="py-2">
         <h2 className="text-center text-2xl">Contact</h2>
-        <div className="flex flex-col md:flex-row justify-center gap-4">
+        <div className="flex flex-col justify-center gap-4 md:flex-row">
           <a href="mailto:info@svetch.com" className="text-center">
             Email
           </a>

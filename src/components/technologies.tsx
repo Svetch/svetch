@@ -1,6 +1,8 @@
-'use client';
-
-import { type Experience, experience, type Technology } from './experience';
+import {
+  type Experience,
+  experience,
+  type Technology,
+} from '../data/experience';
 export function Technologies() {
   return <Calendar experience={experience} />;
 }

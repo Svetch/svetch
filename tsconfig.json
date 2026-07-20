@@ -1,20 +1,11 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -22,27 +13,11 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "types": ["node"],
+    "types": ["vite/client", "node"],
     "paths": {
-      "@/*": ["./*"],
-      "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"],
-      "@public/*": ["public/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    ".next/types/**/*.ts",
-    "next-env.d.ts"
-  ],
-  "exclude": ["node_modules", "tmp"]
+  "include": ["src", "components", "lib", "vite.config.ts", "index.d.ts"],
+  "exclude": ["node_modules", ".output", "dist", "tmp"]
 }
