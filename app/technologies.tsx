@@ -1,13 +1,8 @@
 'use client';
 
-import { get } from 'http';
-import { Experience, experience, Technology } from './experience';
+import { type Experience, experience, type Technology } from './experience';
 export function Technologies() {
-  return (
-    <>
-      <Calendar experience={experience} />
-    </>
-  );
+  return <Calendar experience={experience} />;
 }
 
 function Calendar({ experience }: { experience: Experience }) {
@@ -16,12 +11,12 @@ function Calendar({ experience }: { experience: Experience }) {
     (acc, cur) => {
       const tMax = cur.dates.reduce(
         (acc, cur) => (cur.end > acc ? cur.end : acc),
-        cur.dates[0].end
+        cur.dates[0].end,
       );
 
       const tMin = cur.dates.reduce(
         (acc, cur) => (cur.start < acc ? cur.start : acc),
-        cur.dates[0].start
+        cur.dates[0].start,
       );
 
       return {
@@ -32,7 +27,7 @@ function Calendar({ experience }: { experience: Experience }) {
     {
       start: technologies[0].dates[0].start,
       end: technologies[0].dates[0].end,
-    }
+    },
   );
   const maxDate = new Date(extremes.end.getFullYear(), 11, 31);
   const minDate = new Date(extremes.start.getFullYear(), 0, 1);
@@ -66,7 +61,7 @@ function Calendar({ experience }: { experience: Experience }) {
             );
           })}
         </div>
-        {technologies.map((technology, tId) => (
+        {technologies.map((technology) => (
           <TechnologyEntry
             key={technology.name}
             fullTimeRange={fullTimeRange}
@@ -98,7 +93,7 @@ function TechnologyEntry({
         {(technology.summary || technology.summary === undefined) &&
           `(${getStringRange(technology.dates)})`}
       </div>
-      {technology.dates.map(({ start, end }, i) => {
+      {technology.dates.map(({ start, end }) => {
         const startDifference = Math.abs(start.getTime() - minDate.getTime());
         const startPercentage = (startDifference / fullTimeRange) * 100;
 
@@ -106,7 +101,7 @@ function TechnologyEntry({
         const endPercentage = (endDifference / fullTimeRange) * 100;
         return (
           <span
-            key={i}
+            key={`${start.getTime()}-${end.getTime()}`}
             style={{
               left: `${startPercentage}%`,
               right: `${endPercentage}%`,
@@ -141,7 +136,7 @@ function getDateRange(range: number) {
 function getDatesRange(dates: { start: Date; end: Date }[]) {
   const range = dates.reduce(
     (acc, cur) => acc + (cur.end.getTime() - cur.start.getTime()),
-    0
+    0,
   );
   return getDateRange(range);
 }
